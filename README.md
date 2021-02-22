@@ -58,4 +58,4 @@ Options:
 percy download -r large -p ./ -n 1
 ```
 
-Found an bug/need a feature? Report/Request, raise an issue :ma[here](https://github.com/sakethramanujam/percy-image-downloader/issues/new)
+Found an bug/need a feature? Report/Request, raise an issue [here](https://github.com/sakethramanujam/percy-image-downloader/issues/new)
