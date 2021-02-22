@@ -42,7 +42,6 @@ class Percy:
                    filename: str):
         with open(filename, 'wb') as img:
             shutil.copyfileobj(image_data.raw, img)
-            print(f"{filename} is now saved")
 
     def _get_image_list(self, url: str):
         try:
@@ -76,14 +75,16 @@ class Percy:
         url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&undefined"
         if page_num > 1:     # todo: make range dynamic
             url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&extended="
-        print(f"Fetching images with resolution: {resolution} from page:{page_num}")
+        print(f"Fetching images with resolution: {self.resolution_name}, from page:{page_num}")
         imagelist = self._get_image_list(url=url)
         urls, ids = self._get_image_urls_by_type(imagelist=imagelist)
-        for u, id in zip(urls, ids):
+        for u, _id in zip(urls, ids):
             try:
                 image_data = self._download_image(image_url=u)
-                filename = os.path.join(filepath, f"{id}.jpg")
+                filename = os.path.join(filepath, f"{_id}.jpg")
+                print(f"Now saving:{_id}")
                 self._saveimage(image_data=image_data,
                                 filename=filename)
             except Exception as e:
-                print(f"Error occured downloading image {id}")
+                print(f"Error occured downloading image {_id}")
+        print("Download Complete!")
