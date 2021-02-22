@@ -1,5 +1,6 @@
-# percy-image-downloader
+# :arrow_down: percy-image-downloader
 Unofficial image downloader for Nasa Perseverance Raw Images [website](https://mars.nasa.gov/mars2020/multimedia/raw-images/)
+
 
 ## Installation
 > Requires python>=3.6
@@ -56,3 +57,5 @@ Options:
 ```bash
 percy download -r large -p ./ -n 1
 ```
+
+Found an bug/need a feature? Report/Request, raise an issue :ma[here](https://github.com/sakethramanujam/percy-image-downloader/issues/new)
