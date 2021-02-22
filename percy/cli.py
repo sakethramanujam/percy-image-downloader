@@ -9,7 +9,7 @@ from .percy import create_percy
 @click.version_option(version=__version__)
 def cli():
     """
-    Image Downloader for Percy the Mars Rover
+    Image Downloader for Percy, the Mars Rover
     """
 
 
