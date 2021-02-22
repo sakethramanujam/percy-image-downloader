@@ -22,7 +22,8 @@ class Percy:
         self.init(**config)
 
     def init(self, **config):
-        self.resolution = config.get("resolution")
+        self.resolution_name = config.get("resolution")
+        self.resolution = RESOLUTIONS.get(self.resolution_name)
         self.basepath = config.get("basepath")
         self.page_num = config.get("page_num")
 
