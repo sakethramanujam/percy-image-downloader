@@ -75,7 +75,7 @@ class Percy:
         url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&undefined"
         if page_num > 1:     # todo: make range dynamic
             url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&extended="
-        print(f"Fetching images with resolution {resolution} from page:{page_num}")
+        print(f"Fetching images with resolution: {resolution} from page:{page_num}")
         imagelist = self._get_image_list(url=url)
         urls, ids = self._get_image_urls_by_type(imagelist=imagelist)
         for u, id in zip(urls, ids):
