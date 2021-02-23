@@ -81,10 +81,16 @@ class Percy:
         for u, _id in zip(urls, ids):
             try:
                 image_data = self._download_image(image_url=u)
-                filename = os.path.join(filepath, f"{_id}.jpg")
-                print(f"Now saving:{_id}")
-                self._saveimage(image_data=image_data,
-                                filename=filename)
+                if(resolution == "full"):
+                    filename = os.path.join(filepath, f"{_id}.png")
+                    print(f"Now saving:{_id}")
+                    self._saveimage(image_data=image_data,
+                                    filename=filename)
+                else:
+                    filename = os.path.join(filepath, f"{_id}.jpg")
+                    print(f"Now saving:{_id}")
+                    self._saveimage(image_data=image_data,
+                                    filename=filename)
             except Exception as e:
                 print(f"Error occured downloading image {_id}")
         print("Download Complete!")
