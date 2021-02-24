@@ -1,6 +1,4 @@
 import click
-from click import formatting
-from click_default_group import DefaultGroup
 from .version import __version__
 from .percy import create_percy
 
