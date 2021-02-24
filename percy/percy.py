@@ -41,7 +41,7 @@ class Percy:
         self.format = IMAGE_FORMATS.get(self.resolution_name)
 
     def __repr__(self):
-        return(f"Percy Image Downloader")
+        return("Percy Image Downloader")
 
     def _download_image(self, image_url: str):
         try:
@@ -62,7 +62,7 @@ class Percy:
             image_list = r.json()["images"]
             return image_list
         except Exception as e:
-            print(e)
+            print(f"Error: {e}")
 
     def _get_image_urls_by_type(self, imagelist: list):
         """
@@ -88,6 +88,7 @@ class Percy:
         url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&undefined"
         if page_num > 1:     # todo: make range dynamic
             url = f"https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page={page_num}&order=sol+desc&&&extended="
+
         print(
             f"Fetching images with resolution: {self.resolution_name}, from page:{page_num}")
         imagelist = self._get_image_list(url=url)
@@ -100,5 +101,5 @@ class Percy:
                 self._saveimage(image_data=image_data,
                                 filename=filename)
             except Exception as e:
-                print(f"Error occured downloading image {_id}")
+                print(f"Error {e} occured downloading image {_id}")
         print("Download Complete!")
