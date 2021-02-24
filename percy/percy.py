@@ -5,8 +5,14 @@ from .tools import checkpath, get, n_pages
 from .settings import RESOLUTIONS, IMAGE_FORMATS
 
 
-def create_percy(resolution: str, basepath: str, page_num: int):
+def create_percy(resolution: str,
+                 page_num: int,
+                 basepath: str = "./perseverance"):
+    """
+        Verifies input parameters, creates percy object
+    """
     resolutions = RESOLUTIONS.keys()
+    page_num = int(page_num)
     total_pages = n_pages()
     if resolution not in resolutions:
         print(f"{resolution} not supported/doesn't exist",
