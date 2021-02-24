@@ -1,4 +1,5 @@
 import os
+import requests
 
 def checkpath(*paths: list):
     """
@@ -9,3 +10,8 @@ def checkpath(*paths: list):
         if not os.path.exists(path):
             os.makedirs(path)
 
+def get(url:str,**kwargs):
+    """
+    Wrapper for requests.get
+    """
+    return requests.get(url,**kwargs)
