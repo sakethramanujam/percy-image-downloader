@@ -1,1 +1,1 @@
-from .percy import Percy
+from .percy import create_percy
