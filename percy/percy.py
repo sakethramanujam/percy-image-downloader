@@ -1,18 +1,19 @@
 import os
-import requests
+from requests.models import Response
 import shutil
-from .tools import checkpath
-from .settings import RESOLUTIONS
+from .tools import checkpath, get
+from .settings import RESOLUTIONS, IMAGE_FORMATS
 
 
-def create_percy(resolution: str, basepath: str, page_num:int):
+def create_percy(resolution: str, basepath: str, page_num: int):
     resolutions = RESOLUTIONS.keys()
     if resolution not in resolutions:
         print(f"{resolution} not supported/doesn't exist",
-              "available options are:", '\n'.join(map(str, resolutions)),sep="\n")
+              "available options are:", '\n'.join(map(str, resolutions)), sep="\n")
         raise ValueError(f"Unknown resolution {resolution}")
-    if page_num<0 or page_num>100:
-        raise ValueError(f"Downloading from Page Number:{page_num} is not supported yet.")
+    if page_num < 0:
+        raise ValueError(
+            f"Invalid Page Number")
     else:
         return Percy(resolution=resolution, basepath=basepath, page_num=page_num)
 
