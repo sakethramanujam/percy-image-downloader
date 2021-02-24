@@ -2,6 +2,11 @@
 Unofficial image downloader for Nasa Perseverance Raw Images [website](https://mars.nasa.gov/mars2020/multimedia/raw-images/)
 Image credits: NASA/JPL-Caltech unless otherwise noted.
 
+## :stars: Updates in v0.2
+- The downloader has basic tests setup.
+- Fixes a bug with respect to page number specification.
+- Image Format issues for `full` scale images are now resolved.
+
 ## Installation
 > Requires python>=3.6
 
@@ -44,12 +49,12 @@ Options:
 
 ### Supported Resolution Tags
 
-|Keyword|Resolution as per NASA Website|
-|:-:|:-:|
-|`full`|Full Size Image|
-|`large`|Large Scale Image|
-|`medium`|Medium Scale Image|
-|`small`|Small/Thumbnail Image|
+| Keyword  | Resolution as per NASA Website |
+| :------: | :----------------------------: |
+|  `full`  |        Full Size Image         |
+| `large`  |       Large Scale Image        |
+| `medium` |       Medium Scale Image       |
+| `small`  |     Small/Thumbnail Image      |
 
 
 #### Example
@@ -58,4 +63,5 @@ Options:
 percy download -r large -p ./ -n 1
 ```
 
-Found an bug/need a feature? Report/Request, raise an issue [here](https://github.com/sakethramanujam/percy-image-downloader/issues/new)
+Found an bug/need a feature? 
+- Report/Request, raise an issue [here](https://github.com/sakethramanujam/percy-image-downloader/issues/new)
