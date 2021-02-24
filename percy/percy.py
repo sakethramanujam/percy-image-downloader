@@ -1,21 +1,26 @@
 import os
 from requests.models import Response
 import shutil
-from .tools import checkpath, get
+from .tools import checkpath, get, n_pages
 from .settings import RESOLUTIONS, IMAGE_FORMATS
 
 
 def create_percy(resolution: str, basepath: str, page_num: int):
     resolutions = RESOLUTIONS.keys()
+    total_pages = n_pages()
     if resolution not in resolutions:
         print(f"{resolution} not supported/doesn't exist",
-              "available options are:", '\n'.join(map(str, resolutions)), sep="\n")
-        raise ValueError(f"Unknown resolution {resolution}")
-    if page_num < 0:
+              "available options are:",
+              '\n'.join(map(str, resolutions)),
+              sep="\n")
+        raise ValueError(f"Unknown resolution '{resolution}'")
+    if page_num < 0 or page_num > total_pages:
         raise ValueError(
-            f"Invalid Page Number")
+            f"Invalid Page Number, try a number between 0-{total_pages}")
     else:
-        return Percy(resolution=resolution, basepath=basepath, page_num=page_num)
+        return Percy(resolution=resolution,
+                     basepath=basepath,
+                     page_num=page_num)
 
 
 class Percy:
