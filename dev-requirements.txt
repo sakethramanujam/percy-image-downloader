@@ -1,0 +1,5 @@
+flake8==3.8.4
+click==7.1.2
+requests==2.25.1
+pyflakes==2.2.0
+pytest==6.2.2
