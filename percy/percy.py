@@ -103,3 +103,10 @@ class Percy:
             except Exception as e:
                 print(f"Error {e} occured downloading image {_id}")
         print("Download Complete!")
+
+class Metadata(Percy):
+    def __init__(self, **config):
+        super().__init__(**config)
+
+     #TBD
+    
