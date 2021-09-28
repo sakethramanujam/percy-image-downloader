@@ -3,7 +3,7 @@ from requests.models import Response
 import shutil
 from .tools import checkpath, get, n_pages
 from .settings import RESOLUTIONS, IMAGE_FORMATS
-
+from .version import __version__ as version
 
 def create_percy(resolution: str,
                  page_num: int,
@@ -29,7 +29,10 @@ def create_percy(resolution: str,
                      page_num=page_num)
 
 
-class Percy:
+class Percy(object):
+
+    __attrs__= ["resolution", "basepath", "page_num"]
+
     def __init__(self, **config):
         self.init(**config)
 
@@ -41,7 +44,7 @@ class Percy:
         self.format = IMAGE_FORMATS.get(self.resolution_name)
 
     def __repr__(self):
-        return("Percy Image Downloader")
+        return(f"Percy Image Downloader Ver:{version}")
 
     def _download_image(self, image_url: str):
         try:

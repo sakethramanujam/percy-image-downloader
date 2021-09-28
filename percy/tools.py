@@ -71,13 +71,15 @@ def checkpath(*paths: list):
             os.makedirs(path)
 
 
-def get(url: str, **kwargs):
+def get(url: str, **kwargs) -> requests.Response:
     """
     Wrapper for requests.get
     """
-    r = requests.get(url, **kwargs)
-    if r.status_code == 200:
+    try:
+        r = requests.get(url, **kwargs)
+        status = r.status_code
         return r
-    else:
-        raise Exception(
-            f"Network Exception, failed to fetch requested page {url}")
+    except Exception as e:
+            print(f"Network Exception, failed to fetch\
+                requested page {url} \n status")
+        
